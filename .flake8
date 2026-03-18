@@ -1,0 +1,16 @@
+[flake8]
+
+# Folders/files to ignore
+exclude =
+    venv,
+    .git,
+    __pycache__,
+    .pytest_cache
+
+# Maximum line length (PEP8 default is 79, some teams use 88)
+max-line-length = 88
+
+# Ignore minor warnings that conflict with Black autoformatter
+ignore =
+    E203
+    W503
