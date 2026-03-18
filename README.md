@@ -31,44 +31,43 @@ A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, te
 
 ## How to Run on Kubernetes
  
-1. **Clone the repository**
+**1. Clone the repository**
 
 - git clone https://github.com/E-Farah/devops-flask-demo.git
 - cd devops-flask-demo
 
 
-2. **Make sure your cluster is running**
+**2. Make sure your cluster is running**
 
 - minikube start
 
-**Reminder:** Make sure the Docker Desktop is open.
+    **Reminder:** Make sure the Docker Desktop is open.
 
 
-3. **Deploy the app**
+**3. Deploy the app**
 
 - kubectl apply -f k8s/deployment.yaml
 - kubectl apply -f k8s/service.yaml
 
 **Kubernetes will automatically pull the public Docker image: efarah1/devops-flask-demo:latest**
 
-4. **Verify the deployment**
+**4. Verify the deployment**
 - kubectl get pods
 - kubectl get service
 
-5. **Access the app**
+**5. Access the app**
 
-If using Minikube:
 
 - minikube service flask-service --url
 
-You will receive a URL like: http://<minikube-ip>:<node-port> .
-Open the URL in your browser.
+    You will receive a URL like: [text](http://<minikube-ip>:<node-port>)
+    Open the URL in your browser.
 
-Example API call:
-http://<minikube-ip>:<node-port>/add?a=2&b=3
+    Example API call:
+    [http://<minikube-ip>:<node-port>](http://<minikube-ip>:<node-port>)/add?a=2&b=3
 
-Expected result:
-{"result": 5}
+    Expected result:
+    {"result": 5}
 
 
 ---
