@@ -1,39 +1,67 @@
-name: simple python project
+name: CI/CD Python Flask App
+
 on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-            - name: Set up Python 3.9
-              uses: actions/setup-python@v5
-              with:
-                  python-version: 3.9
-            - name: Install dependencies
-              run: |
-                  python -m pip install --upgrade pip
-                  pip install -r requirements.txt
-            - name: Run tests
-              run: pytest
-    docker:
-        needs: build
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-            - name: Build the Docker image
-              run: docker build -t my-python-app .
-            - name: Run the Docker container
-              run: docker run my-python-app
-            - name: login to DockerHub
-              uses: docker/login-action@v3
-              with:
-                  username: ${{ secrets.DOCKER_USERNAME }}
-                  password: ${{ secrets.DOCKER_PASSWORD }}
-            - name: Push the Docker image
-              run: |
-                  docker tag my-python-app ${{ secrets.DOCKER_USERNAME }}/my-python-app:latest
-                  docker push ${{ secrets.DOCKER_USERNAME }}/my-python-app:latest
+
+  # ----------- JOB 1: Test & Lint -----------
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - uses: actions/checkout@v4
+
+      # Setup Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8
+
+      # Lint code
+      - name: Lint code
+        run: flake8 .
+
+      # Run tests
+      - name: Run tests
+        run: pytest
+
+  # ----------- JOB 2: Docker Build & Push -----------
+  docker:
+    needs: build  # only runs if tests pass
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout code
+      - uses: actions/checkout@v4
+
+      # Build Docker image
+      - name: Build Docker image
+        run: docker build -t my-python-app .
+
+      # Run Docker container (optional sanity check)
+      - name: Run Docker container
+        run: docker run -d -p 5000:5000 my-python-app
+
+      # Login to DockerHub
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Tag & Push image
+      - name: Push Docker image
+        run: |
+          docker tag my-python-app ${{ secrets.DOCKER_USERNAME }}/my-python-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-python-app:latest

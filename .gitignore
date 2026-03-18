@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+ENV/
+env/
+
+# VSCode
+.vscode/
+
+# Mac/Linux hidden files
+.DS_Store
+
+# pytest cache
+.pytest_cache/
+
+# Docker
+*.dockerignore
