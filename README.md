@@ -29,53 +29,46 @@ A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, te
 
 ---
 
-## How to Run
-
-### Run Locally
-
-1. **Clone the repo:**
+## How to Run on Kubernetes
+ 
+1. **Clone the repository**
 
 - git clone https://github.com/E-Farah/devops-flask-demo.git
 - cd devops-flask-demo
 
 
-2. **Create and activate a virtual environment:**
+2. **Make sure your cluster is running**
 
-- python -m venv venv
-- venv\Scripts\activate (For Windows)
- **OR**
- source venv/bin/activate (For macOS / Linux)
+- minikube start
 
-3. **Install dependencies:**
-- pip install -r requirements.txt
-
-4. **Run the Flask app:**
-- python app.py
-
-5. **Open your browser and go to:**
-
-- http://localhost:5000/
-
-**Example: /add?a=2&b=3 → {"result": 5}**
-
-### Run with Docker
-
-1. **Build the Docker image:**
-- docker build -t devops-flask-demo .
-
-2. **Run the container:**
-- docker run -p 5000:5000 devops-flask-demo
-
-3. **Visit http://localhost:5000/ in your browser.**
+**Reminder:** Make sure the Docker Desktop is open.
 
 
-### Deploy to Kubernetes
-1. **kubectl apply -f k8s/deployment.yaml**
-2. **kubectl apply -f k8s/service.yaml**
-3. **kubectl get pods**
-4. **kubectl get service**
+3. **Deploy the app**
 
-**The deployment uses the public Docker image: efarah1/devops-flask-demo:latest**
+- kubectl apply -f k8s/deployment.yaml
+- kubectl apply -f k8s/service.yaml
+
+**Kubernetes will automatically pull the public Docker image: efarah1/devops-flask-demo:latest**
+
+4. **Verify the deployment**
+- kubectl get pods
+- kubectl get service
+
+5. **Access the app**
+
+If using Minikube:
+
+- minikube service flask-service --url
+
+You will receive a URL like: http://<minikube-ip>:<node-port> .
+Open the URL in your browser.
+
+Example API call:
+http://<minikube-ip>:<node-port>/add?a=2&b=3
+
+Expected result:
+{"result": 5}
 
 
 ---
