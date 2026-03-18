@@ -38,26 +38,26 @@ A **Python Flask app** showcasing **DevOps best practices**: CI/CD, Docker, test
 
 ### Run Locally
 
-1. Clone the repo:
+1. **Clone the repo:**
 
 - git clone https://github.com/E-Farah/devops-flask-demo.git
 - cd devops-flask-demo
 
 
-2. Create and activate a virtual environment:
+2. **Create and activate a virtual environment:**
 
 - python -m venv venv
 - venv\Scripts\activate (For Windows)
- OR
+ **OR**
  source venv/bin/activate (For macOS / Linux)
 
-3. Install dependencies:
+3. **Install dependencies:**
 - pip install -r requirements.txt
 
-4. Run the Flask app:
+4. **Run the Flask app:**
 - python app.py
 
-5. Open your browser and go to:
+5. **Open your browser and go to:**
 
 - http://localhost:5000/
 
@@ -65,10 +65,10 @@ A **Python Flask app** showcasing **DevOps best practices**: CI/CD, Docker, test
 
 ### Run with Docker
 
-1. Build the Docker image:
+1. **Build the Docker image:**
 - docker build -t devops-flask-demo .
 
-2. Run the container:
+2. **Run the container:**
 - docker run -p 5000:5000 devops-flask-demo
 
-3. Visit http://localhost:5000/ in your browser.
+3. **Visit http://localhost:5000/ in your browser.**
