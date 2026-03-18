@@ -1,18 +1,23 @@
-# **Python Flask DevOps Demo**
+# Python Flask DevOps Demo
 
-A **Python Flask app** showcasing **DevOps best practices**: CI/CD, Docker, testing, and linting.
+A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, testing, linting, and Kubernetes deployment**.
 
 ---
 
-# **Features**
+## Features
 
-- `GET /` → Returns a JSON message to confirm the app is running.  
-- `GET /add?a=<num>&b=<num>` → Adds two numbers, returns JSON result.  
-- **Automated Testing** with `pytest`.  
-- **Code Quality** with `flake8`.  
-- **Dockerized** for easy deployment.  
-- **CI/CD Pipeline** with GitHub Actions, including automated tests, linting, and Docker image push.  
-
+- **Flask API**
+  - `GET /` → Returns a JSON message confirming the app is running.
+  - `GET /add?a=<num>&b=<num>` → Adds two numbers and returns the result in JSON.
+- **Automated Testing** with `pytest`.
+- **Code Quality** enforced via `flake8`.
+- **Dockerized** for easy deployment.
+- **CI/CD Pipeline**
+  - Runs tests and linting on every push/pull request.
+  - Builds and pushes Docker images to Docker Hub using GitHub Actions secrets.
+- **Kubernetes Ready**
+  - Deployment uses a public Docker image.
+  - Includes NodePort service for local testing.
 
 ---
 
