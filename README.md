@@ -60,11 +60,11 @@ A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, te
 
 - minikube service flask-service --url
 
-    You will receive a URL like: [text](http://<minikube-ip>:<node-port>)
+    You will receive a URL like: http://minikube-ip:node-port
     Open the URL in your browser.
 
     Example API call:
-    [http://<minikube-ip>:<node-port>](http://<minikube-ip>:<node-port>)/add?a=2&b=3
+    http://minikube-ip:node-port/add?a=2&b=3
 
     Expected result:
     {"result": 5}
