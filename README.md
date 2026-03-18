@@ -13,16 +13,6 @@ A **Python Flask app** showcasing **DevOps best practices**: CI/CD, Docker, test
 - **Dockerized** for easy deployment.  
 - **CI/CD Pipeline** with GitHub Actions, including automated tests, linting, and Docker image push.  
 
----
-
-# **Tech Stack**
-
-- Python 3.9  
-- Flask  
-- Pytest  
-- Flake8  
-- Docker  
-- GitHub Actions
 
 ---
 
@@ -72,3 +62,25 @@ A **Python Flask app** showcasing **DevOps best practices**: CI/CD, Docker, test
 - docker run -p 5000:5000 devops-flask-demo
 
 3. **Visit http://localhost:5000/ in your browser.**
+
+
+### Deploy to Kubernetes
+1. **kubectl apply -f k8s/deployment.yaml**
+2. **kubectl apply -f k8s/service.yaml**
+3. **kubectl get pods**
+4. **kubectl get service**
+
+**The deployment uses the public Docker image: efarah1/devops-flask-demo:latest**
+
+
+---
+
+# **Tech Stack**
+
+- Python 3.9  
+- Flask  
+- Pytest  
+- Flake8  
+- Docker  
+- GitHub Actions
+- Kubernetes
