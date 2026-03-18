@@ -1,18 +1,33 @@
-# Python Flask DevOps Demo
+# **Python Flask DevOps Demo**
 
-This repository contains a **simple Python Flask application** demonstrating a modern DevOps workflow.  
+A **Python Flask app** showcasing **DevOps best practices**: CI/CD, Docker, testing, and linting.
 
-The app provides a minimal Flask API with:
+---
 
-- `GET /` → Returns a JSON message confirming the app is running.  
-- `GET /add?a=<num>&b=<num>` → Adds two numbers and returns the result in JSON.  
+# **Features**
 
-Key DevOps features included in this project:
+- `GET /` → Returns a JSON message to confirm the app is running.  
+- `GET /add?a=<num>&b=<num>` → Adds two numbers, returns JSON result.  
+- **Automated Testing** with `pytest`.  
+- **Code Quality** with `flake8`.  
+- **Dockerized** for easy deployment.  
+- **CI/CD Pipeline** with GitHub Actions, including automated tests, linting, and Docker image push.  
 
-- **Automated Testing**: Unit tests with `pytest` to ensure correct functionality.  
-- **Code Quality**: `flake8` used for enforcing PEP8 standards.  
-- **Dockerized**: The app can run in a Docker container for consistent deployment.  
-- **CI/CD Pipeline**: GitHub Actions automatically runs tests, linting, and builds/pushes Docker images.  
-- **Secure Secrets Management**: DockerHub credentials are stored safely as GitHub Actions secrets.
+---
 
-This project serves as a **demo for DevOps best practices** in Python applications, combining testing, linting, containerization, and automated deployment.
+# **Tech Stack**
+
+- Python 3.9  
+- Flask  
+- Pytest  
+- Flake8  
+- Docker  
+- GitHub Actions
+
+---
+
+# **DevOps Notes**
+
+- `.flake8` ensures only project files are checked.  
+- Secrets (e.g., DockerHub credentials) are stored securely in GitHub Actions.  
+- Fully automated pipeline runs on every push/pull request.
