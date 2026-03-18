@@ -2,7 +2,6 @@ from app import app
 
 
 def test_add_numbers_success():
-    # Test valid number inputs using Flask test client
     client = app.test_client()
 
     response = client.get("/add?a=2&b=3")
@@ -15,7 +14,6 @@ def test_add_numbers_success():
 
 
 def test_add_numbers_error():
-    # Test invalid input
     client = app.test_client()
 
     response = client.get("/add?a=hello&b=3")

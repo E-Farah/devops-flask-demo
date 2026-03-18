@@ -1,13 +1,15 @@
 [flake8]
 
-# Folders/files to ignore
+''' In order to only check app.py and test_app.py, 
+flake8 will ignore the following folders
+so it does not check their "*.py" files ''' 
 exclude =
     venv,
     .git,
     __pycache__,
     .pytest_cache
 
-# Maximum line length (PEP8 default is 79, some teams use 88)
+# Maximum line length changed to 88 
 max-line-length = 88
 
 # Ignore minor warnings that conflict with Black autoformatter
