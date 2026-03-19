@@ -1,17 +1,18 @@
 import os
 from flask import Flask, request, jsonify
 
+# Get environment variable; default to 'development' if not set
 ENV = os.getenv("APP_ENV", "development")
 
-
+# Set debug mode based on environment
 if ENV == "development":
-    DEBUG = True # if its run locally (development) then it's fine to show detailed errors/info
+    DEBUG = True  # Local development: show detailed errors/info
 else:
-    DEBUG = False # if ran on k8s (production) then showing detailed info could leak internal/secret info
+    DEBUG = False  # Production: avoid exposing internal info
 
 app = Flask(__name__)
-app.config["DEBUG"] = DEBUG # incase of an error(like division by zero) this decided whether to show detailed info (True) or not (False)
-            
+app.config["DEBUG"] = DEBUG  # Determines if detailed errors are shown
+
 
 @app.route("/")
 def home():
@@ -19,6 +20,7 @@ def home():
         "message": "The App is running!",
         "environment": ENV
     })
+
 
 @app.route("/add")
 def add():
@@ -28,6 +30,7 @@ def add():
         return jsonify({"result": a + b})
     except (TypeError, ValueError):
         return jsonify({"error": "Invalid input"}), 400
+
 
 @app.route("/divide")
 def divide():
