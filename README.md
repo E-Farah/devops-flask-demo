@@ -7,11 +7,13 @@ A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, te
 ## Features
 
 - **Flask API**
-  - `GET /` → Returns a JSON message confirming the app is running.
-  - `GET /add?a=<num>&b=<num>` → Adds two numbers and returns the result in JSON.
+  - `GET /` : Returns a message **The App is running!** (to confirm that the app is running).
+  - `GET /add?a=<num>&b=<num>` : Adds two numbers and returns the result.
+  - `GET /divide?x=<num>&y=<num>` : Divides two numbers, handles zero division safely (due to APP_ENV)
 - **Automated Testing** with `pytest`.
 - **Code Quality** enforced via `flake8`.
 - **Dockerized** for easy deployment.
+- **Environment-aware (APP_ENV)** : Automatically detects if the app is running locally or in Kubernetes, helping prevent accidental exposure of internal info.
 - **CI/CD Pipeline**
   - Runs tests and linting on every push/pull request.
   - Builds and pushes Docker images to Docker Hub using GitHub Actions secrets.
@@ -21,10 +23,10 @@ A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, te
 
 ---
 
-# **DevOps Notes**
+## **DevOps Notes**
 
 - `.flake8` ensures only project files are checked.  
-- Secrets (e.g., DockerHub credentials) are stored securely in GitHub Actions.  
+- Secrets (such as DockerHub credentials) are stored securely in GitHub Actions.  
 - Fully automated pipeline runs on every push/pull request.
 
 ---
@@ -72,7 +74,7 @@ A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, te
 
 ---
 
-# **Tech Stack**
+## **Tech Stack**
 
 - Python 3.9  
 - Flask  
@@ -81,3 +83,32 @@ A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, te
 - Docker  
 - GitHub Actions
 - Kubernetes
+
+---
+
+
+# **System Design & Architecture Flow**
+
+**1. Developer pushes code to GitHub**
+
+**2. GitHub Actions automatically runs a CI pipeline:**
+
+- Checks code quality with **flake8**
+
+- Runs tests with **pytest**
+
+**3. On main branch:**
+
+- Docker image is built
+
+- Image is pushed to Docker Hub
+
+**4. Kubernetes pulls the image and deploys it**
+
+### Kubernetes Features
+
+- **Health checks:** Kubernetes automatically checks if the app is running and ready, and restarts it if something goes wrong  
+
+- **Resource limits:** Limits the app from using too much CPU or memory
+
+- **Environment variables:** Let the app know if it’s running locally (development) or in a deployed environment like Kubernetes (production) without changing the code (used for safety reasons like avoid leaking information)
