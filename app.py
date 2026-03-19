@@ -5,10 +5,7 @@ from flask import Flask, request, jsonify
 ENV = os.getenv("APP_ENV", "development")
 
 # Set debug mode based on environment
-if ENV == "development":
-    DEBUG = True  # Local development: show detailed errors/info
-else:
-    DEBUG = False  # Production: avoid exposing internal info
+DEBUG = True if ENV == "development" else False
 
 app = Flask(__name__)
 app.config["DEBUG"] = DEBUG  # Determines if detailed errors are shown
@@ -42,6 +39,12 @@ def divide():
         return jsonify({"error": "Cannot divide by zero"}), 400
     except (TypeError, ValueError):
         return jsonify({"error": "Invalid input"}), 400
+
+
+@app.route("/health")
+def health():
+    """Endpoint for Kubernetes liveness/readiness probes."""
+    return jsonify({"status": "ok"})
 
 
 if __name__ == "__main__":
