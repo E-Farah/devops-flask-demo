@@ -5,7 +5,10 @@ from flask import Flask, request, jsonify
 ENV = os.getenv("APP_ENV", "development")
 
 # Set debug mode based on environment
-DEBUG = True if ENV == "development" else False
+if ENV == "development":
+    DEBUG = True # If it's running locally
+else:
+    DEBUG = False # If it's running on Kubernetes / production
 
 app = Flask(__name__)
 app.config["DEBUG"] = DEBUG  # Determines if detailed errors are shown
