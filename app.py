@@ -6,12 +6,12 @@ ENV = os.getenv("APP_ENV", "development")
 
 # Set debug mode based on environment
 if ENV == "development":
-    DEBUG = True # If it's running locally
+    DEBUG = True  # If it's running locally
 else:
-    DEBUG = False # If it's running on Kubernetes / production
+    DEBUG = False  # If it's running on Kubernetes / production
 
 app = Flask(__name__)
-app.config["DEBUG"] = DEBUG  # Determines if detailed errors are shown
+app.config["DEBUG"] = DEBUG  # Determines if detailed errors (internal info) are shown
 
 
 @app.route("/")
