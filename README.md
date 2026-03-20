@@ -7,9 +7,9 @@ A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, te
 ## Features
 
 - **Flask API**
-  - `GET /` : Returns a message **The App is running!** (to confirm that the app is running).
+  - `GET /` : Returns a message **Hello, the app is running.**.
   - `GET /add?a=<num>&b=<num>` : Adds two numbers and returns the result.
-  - `GET /divide?x=<num>&y=<num>` : Divides two numbers, handles zero division safely (due to APP_ENV)
+  - `GET /divide?x=<num>&y=<num>` : Divides two numbers, handles zero division safely
 - **Automated Testing** with `pytest`.
 - **Code Quality** enforced via `flake8`.
 - **Dockerized** for easy deployment.
