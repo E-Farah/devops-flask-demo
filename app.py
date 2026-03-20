@@ -17,7 +17,7 @@ app.config["DEBUG"] = DEBUG  # Determines if detailed errors are shown
 @app.route("/")
 def home():
     return jsonify({
-        "message": "The App is running!",
+        "message": "Hello, the app is running.",
         "environment": ENV
     })
 
