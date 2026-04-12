@@ -13,7 +13,7 @@ A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, te
 - **Automated Testing** with `pytest`.
 - **Code Quality** enforced via `flake8`.
 - **Dockerized** for easy deployment.
-- **Environment-aware (APP_ENV)** : Automatically detects if the app is running locally or in Kubernetes, helping prevent accidental exposure of internal info.
+- **Environment-aware (APP_ENV)** : Automatically detects if the app is running locally or in Kubernetes, helping prevent accidental exposure of internal info. (Future proofing)
 - **CI Pipeline**
   - Runs tests and linting on every push/pull request.
   - Builds and pushes Docker images to Docker Hub using GitHub Actions secrets.
