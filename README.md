@@ -1,6 +1,6 @@
 # Python Flask DevOps Demo
 
-A Python Flask application demonstrating **CI/CD with GitHub Actions, Docker, testing, linting, and Kubernetes deployment**.
+A Python Flask application demonstrating **CI with GitHub Actions, Docker, testing, linting, and Kubernetes deployment**.
 
 ---
 
